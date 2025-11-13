@@ -1,0 +1,42 @@
+metrics:
+  feature: monitoring-metrics
+  version: 1.0.0
+
+  environments:
+    dev:
+      exportInterval: 10000
+      prometheusPort: 9090
+      cloudWatchEnabled: false
+      detailedMetrics: true
+      alerting: false
+
+    int:
+      exportInterval: 30000
+      prometheusPort: 9090
+      cloudWatchEnabled: true
+      cloudWatchNamespace: /app/int/metrics
+      detailedMetrics: true
+      alerting: false
+
+    preprod:
+      exportInterval: 60000
+      prometheusPort: 9090
+      cloudWatchEnabled: true
+      cloudWatchNamespace: /app/preprod/metrics
+      detailedMetrics: false
+      alerting: true
+      alertThresholds:
+        errorRate: 0.05
+        p99Latency: 1000
+
+    main:
+      exportInterval: 60000
+      prometheusPort: 9090
+      cloudWatchEnabled: true
+      cloudWatchNamespace: /app/production/metrics
+      detailedMetrics: false
+      alerting: true
+      alertThresholds:
+        errorRate: 0.01
+        p99Latency: 500
+      pagerDuty: true
