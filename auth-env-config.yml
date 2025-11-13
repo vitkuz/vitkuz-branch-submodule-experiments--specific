@@ -1,0 +1,32 @@
+authentication:
+  feature: user-authentication
+  version: 1.0.0
+
+  environments:
+    dev:
+      jwtSecret: dev-secret-change-in-production
+      dbConnection: postgresql://localhost:5432/auth_dev
+      redisUrl: redis://localhost:6379/0
+      emailVerification: false
+      logLevel: debug
+
+    int:
+      jwtSecret: int-secret-change-in-production
+      dbConnection: postgresql://int-db:5432/auth_int
+      redisUrl: redis://int-redis:6379/0
+      emailVerification: true
+      logLevel: info
+
+    preprod:
+      jwtSecret: preprod-secret-change-in-production
+      dbConnection: postgresql://preprod-db:5432/auth_preprod
+      redisUrl: redis://preprod-redis:6379/0
+      emailVerification: true
+      logLevel: warn
+
+    main:
+      jwtSecret: REPLACE_WITH_ENV_VAR
+      dbConnection: REPLACE_WITH_ENV_VAR
+      redisUrl: REPLACE_WITH_ENV_VAR
+      emailVerification: true
+      logLevel: error
