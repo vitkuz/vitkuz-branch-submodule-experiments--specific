@@ -1,0 +1,16 @@
+feature:
+  name: awesome-feature
+  version: 1.0.0
+  environments:
+    dev:
+      enabled: true
+      debug: true
+    int:
+      enabled: true
+      debug: false
+    preprod:
+      enabled: true
+      debug: false
+    master:
+      enabled: true
+      debug: false
