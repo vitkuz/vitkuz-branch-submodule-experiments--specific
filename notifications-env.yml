@@ -1,0 +1,47 @@
+notifications:
+  feature: notification-system
+  version: 1.0.0
+
+  environments:
+    dev:
+      emailProvider: mock
+      smsProvider: mock
+      pushProvider: mock
+      sqsQueue: notifications-dev
+      sendRealNotifications: false
+      logAllNotifications: true
+
+    int:
+      emailProvider: ses
+      smsProvider: twilio
+      pushProvider: fcm
+      sqsQueue: notifications-int
+      sendRealNotifications: false
+      logAllNotifications: true
+      testRecipients:
+        - test@example.com
+
+    preprod:
+      emailProvider: ses
+      smsProvider: twilio
+      pushProvider: fcm
+      sqsQueue: notifications-preprod
+      sendRealNotifications: true
+      logAllNotifications: false
+      allowedDomains:
+        - example.com
+        - test.com
+
+    main:
+      emailProvider: ses
+      smsProvider: twilio
+      pushProvider: fcm
+      sqsQueue: notifications-production
+      sendRealNotifications: true
+      logAllNotifications: false
+      rateLimit:
+        email: 100
+        sms: 50
+        push: 1000
+      monitoring: true
+      alertOnFailure: true
