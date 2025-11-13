@@ -1,0 +1,39 @@
+cache:
+  feature: caching-layer
+  version: 1.0.0
+
+  environments:
+    dev:
+      provider: memory
+      redisUrl: null
+      ttl: 300000
+      maxMemory: 50MB
+      metrics: false
+
+    int:
+      provider: redis
+      redisUrl: redis://int-redis:6379/1
+      ttl: 600000
+      maxMemory: 100MB
+      metrics: true
+      metricsInterval: 60000
+
+    preprod:
+      provider: redis
+      redisUrl: redis://preprod-redis:6379/1
+      ttl: 1800000
+      maxMemory: 256MB
+      metrics: true
+      metricsInterval: 30000
+      persistenceEnabled: true
+
+    main:
+      provider: redis-cluster
+      redisUrl: REPLACE_WITH_ENV_VAR
+      ttl: 3600000
+      maxMemory: 512MB
+      metrics: true
+      metricsInterval: 15000
+      persistenceEnabled: true
+      replicationEnabled: true
+      clusterNodes: 3
