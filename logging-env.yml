@@ -1,0 +1,35 @@
+logging:
+  feature: logging-improvements
+  version: 1.0.0
+
+  environments:
+    dev:
+      level: debug
+      pretty: true
+      destination: stdout
+      cloudWatchEnabled: false
+
+    int:
+      level: info
+      pretty: false
+      destination: stdout
+      cloudWatchEnabled: true
+      cloudWatchGroup: /app/int/logs
+      cloudWatchStream: app-int
+
+    preprod:
+      level: warn
+      pretty: false
+      destination: stdout
+      cloudWatchEnabled: true
+      cloudWatchGroup: /app/preprod/logs
+      cloudWatchStream: app-preprod
+
+    main:
+      level: error
+      pretty: false
+      destination: stdout
+      cloudWatchEnabled: true
+      cloudWatchGroup: /app/production/logs
+      cloudWatchStream: app-production
+      alerting: true
