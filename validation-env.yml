@@ -1,0 +1,39 @@
+validation:
+  feature: data-validation
+  version: 1.0.0
+
+  environments:
+    dev:
+      strictMode: false
+      failFast: false
+      logValidationErrors: true
+      cacheSchemas: false
+      allowInvalidData: true
+
+    int:
+      strictMode: false
+      failFast: false
+      logValidationErrors: true
+      cacheSchemas: true
+      allowInvalidData: false
+      reportMetrics: true
+
+    preprod:
+      strictMode: true
+      failFast: true
+      logValidationErrors: false
+      cacheSchemas: true
+      allowInvalidData: false
+      reportMetrics: true
+      alertOnValidationFailures: true
+
+    main:
+      strictMode: true
+      failFast: true
+      logValidationErrors: false
+      cacheSchemas: true
+      allowInvalidData: false
+      reportMetrics: true
+      alertOnValidationFailures: true
+      performanceMonitoring: true
+      validationTimeout: 100
